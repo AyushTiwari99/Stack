@@ -1,0 +1,74 @@
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+public class STACK_BY_LINKEDLIST
+{
+    Node top;
+
+    public boolean isEmpty()
+    {
+        if(top ==null) return true;
+        else return false;
+    }
+    public void push(Node newnode)
+    {
+        if(top==null)
+        {
+            top=newnode;
+        }
+        else
+        {
+            newnode.next=top;
+            top=newnode;
+        }
+    }
+    public void pop() {
+        if (top == null) {
+            System.out.println("No element-Can't Delete");
+        }
+        else
+        {
+            System.out.println("Popped element:"+top.data);
+            top = top.next;
+        }
+    }
+    public int peek()
+    {
+        if(top==null)
+        {
+            System.out.println("No element");
+        }
+        else
+        {
+           // System.out.println("Top element:"+top.data);
+            return top.data;
+        }
+        return top.data;
+    }
+    public void display(){
+        if(isEmpty()) System.out.println("STACK IS EMPTY");
+        else
+        {
+            Node temp = top;
+            while(temp!=null)
+            {
+                System.out.println(temp.data);
+                temp=temp.next;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        STACK_BY_LINKEDLIST obj = new STACK_BY_LINKEDLIST();
+        obj.push(new Node(5));
+        obj.push(new Node(11));
+        obj.push(new Node(10));
+        obj.pop();
+        obj.display();
+    }
+}
