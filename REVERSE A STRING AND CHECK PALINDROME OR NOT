@@ -1,0 +1,66 @@
+import java.util.Scanner;
+public class Rev_Str
+{
+    char arr[];
+    int top;
+    Rev_Str(int size)
+    {
+        arr=new char[size];
+        top=-1;
+    }
+    public boolean isEmpty()
+    {
+        if(top==-1) return true;
+        else return false;
+    }
+    public boolean isFull()
+    {
+        if(top==arr.length-1) return true;
+        else return false;
+    }
+    public char peek()
+    {
+        if(isEmpty()) return 0;
+        else return arr[top];
+    }
+    public void push(char i)
+    {
+        if(isFull()) System.out.println("Can't Insert");
+        else
+        {
+            top++;
+            arr[top]=i;
+        }
+    }
+    public char pop()
+    {
+        if(isEmpty())
+            return 0;
+        else
+        {
+            char a =arr[top];
+            top--;
+            return a;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String s1="";
+        Rev_Str obj = new Rev_Str(s.length());
+        for (int i = 0; i <s.length(); i++)
+        {
+            obj.push(s.charAt(i));
+        }
+        System.out.println(obj.peek());
+        for (int i = 0; i < s.length(); i++) {
+            s1+=obj.pop();
+        }
+        System.out.println(s1);     // STRING REVERSED
+
+        //  TO CHECK IF PALINDROME OR NOT
+        if(s.equals(s1)) System.out.println("Palindrome");
+        else System.out.println("Not Palindrome");
+
+    }
+}
